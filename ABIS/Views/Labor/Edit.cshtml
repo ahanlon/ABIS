@@ -1,0 +1,108 @@
+﻿@model ABIS.Models.LABOR_CATALOG
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>LABOR_CATALOG</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LaborCatalogID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LaborCatalogID)
+            @Html.ValidationMessageFor(model => model.LaborCatalogID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClientTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClientTitle)
+            @Html.ValidationMessageFor(model => model.ClientTitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClientVariant)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClientVariant)
+            @Html.ValidationMessageFor(model => model.ClientVariant)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClientEducation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClientEducation)
+            @Html.ValidationMessageFor(model => model.ClientEducation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClientYearsOfExp)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClientYearsOfExp)
+            @Html.ValidationMessageFor(model => model.ClientYearsOfExp)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClientRate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClientRate)
+            @Html.ValidationMessageFor(model => model.ClientRate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ASDJobName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ASDJobName)
+            @Html.ValidationMessageFor(model => model.ASDJobName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ASDVariant)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ASDVariant)
+            @Html.ValidationMessageFor(model => model.ASDVariant)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExemptInd)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExemptInd)
+            @Html.ValidationMessageFor(model => model.ExemptInd)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ASDLaborCategoryID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ASDLaborCategoryID)
+            @Html.ValidationMessageFor(model => model.ASDLaborCategoryID)
+        </div>
+
+        <p>
+            <button type="submit" value="Save" class="btn btn-primary">Save</button>
+        </p>
+    </fieldset>
+}
+
+<button class="btn btn-primary">
+    @Html.ActionLink("Back to List", "LaborCatalogList", null, new { @style = "text-decoration:none; color:white;" })
+</button>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

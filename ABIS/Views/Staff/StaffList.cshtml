@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ABIS.Models.STAFF>
+
+@{
+    ViewBag.Title = "StaffList";
+}
+
+<h2>Staff List</h2>
+
+<button type="button" class="btn btn-primary">
+    @Html.ActionLink("Create New", "Create", "Staff", null, new { @style = "text-decoration:none; color:white;" })
+</button>
+    
+<button class="btn btn-primary" >
+    @Html.ActionLink("Labor Catalog", "LaborCatalogList", "Labor", null, new { @style = "text-decoration:none; color:white;" })
+</button>
+
+<table class="table table-bordered table-condensed table-hover table-striped" >
+    <tr>
+        <th>
+            Staff ID
+        </th>
+        <th>
+            Catalog ID
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Birth Date
+        </th>
+        <th>
+            Start Date
+        </th>
+        <th>
+            Indirect Ind
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LaborCatalogID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IndirectInd)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit","Staff", new { id = item.StaffID })" title="Edit"><span class="icon-edit"></span></a>
+            <a href="@Url.Action("Details", "Staff", new { id = item.StaffID })" title="Details"><span class="icon-info-sign"></span></a>
+            <a href="@Url.Action("Delete", "Staff", new { id = item.StaffID })" title="Delete"><span class="icon-trash"></span></a>
+        </td>
+    </tr>
+}
+
+</table>

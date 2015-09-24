@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ABIS.Models.LABOR_CATALOG>
+
+@{
+    ViewBag.Title = "LaborCatalogList";
+}
+
+<h2>LaborCatalogList</h2>
+
+<button class="btn btn-primary">
+    @Html.ActionLink("Create New", "Create", "Labor", null, new { @Style = "text-decoration:none; color:white;" })
+</button>
+<button class="btn btn-primary">
+    @Html.ActionLink("Labor Category", "CategoryList", "Category", null, new { @Style = "text-decoration:none; color:white;" })
+</button>
+
+<table class="table table-bordered table-condensed table-hover table-striped">
+    <tr>
+        <th>
+            Catalog ID
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Variant
+        </th>
+        <th>
+            Education
+        </th>
+        <th>
+            Exp (yrs)
+        </th>
+        <th>
+            Rate
+        </th>
+        <th>
+            Job Name
+        </th>
+        <th>
+            ASD Variant
+        </th>
+        <th>
+            Exempt Ind
+        </th>
+        <th>
+            Category ID
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LaborCatalogID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientVariant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientEducation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientYearsOfExp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASDJobName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASDVariant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExemptInd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASDLaborCategoryID)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit","Staff", new { id = item.LaborCatalogID })" title="Edit"><span class="icon-edit"></span></a>
+            <a href="@Url.Action("Details", "Staff", new { id = item.LaborCatalogID })" title="Details"><span class="icon-info-sign"></span></a>
+            <a href="@Url.Action("Delete", "Staff", new { id = item.LaborCatalogID })" title="Delete"><span class="icon-trash"></span></a>
+        </td>
+    </tr>
+}
+
+</table>

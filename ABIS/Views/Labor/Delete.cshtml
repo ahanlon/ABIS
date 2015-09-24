@@ -1,0 +1,102 @@
+﻿@model ABIS.Models.LABOR_CATALOG
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<aside>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.LaborCatalogID)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.LaborCatalogID)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ClientTitle)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ClientTitle)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ClientVariant)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ClientVariant)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ClientEducation)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ClientEducation)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ClientYearsOfExp)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ClientYearsOfExp)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ClientRate)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ClientRate)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ASDJobName)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ASDJobName)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ASDVariant)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ASDVariant)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ExemptInd)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ExemptInd)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ASDLaborCategoryID)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ASDLaborCategoryID)
+        </div>
+    </div>
+</aside>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <button type="submit" value="Delete" class="btn btn-primary">
+            Delete
+        </button>
+        <button class="btn btn-primary">
+            @Html.ActionLink("Back to List", "LaborCatalogList", null, new { @style = "text-decoration:none; color:white;" })
+        </button>
+    </p>
+}

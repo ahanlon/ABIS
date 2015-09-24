@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ABIS.Models.LABOR_CATEGORY>
+
+@{
+    ViewBag.Title = "CategoryList";
+}
+
+<h2>CategoryList</h2>
+
+<button class="btn btn-primary">
+    @Html.ActionLink("Create New", "Create", "Category", null, new { @Style = "text-decoration:none; color:white;" })
+</button>
+<table class="table table-bordered table-condensed table-hover table-striped">
+    <tr>
+        <th>
+            ASD Labor Category ID
+        </th>
+        <th>
+            Labor Category
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASDLaborCategoryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LaborCategory)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit","Category", new { id = item.ASDLaborCategoryID })" title="Edit"><span class="icon-edit"></span></a>
+            <a href="@Url.Action("Details", "Category", new { id = item.ASDLaborCategoryID })" title="Details"><span class="icon-info-sign"></span></a>
+            <a href="@Url.Action("Delete", "Category", new { id = item.ASDLaborCategoryID })" title="Delete"><span class="icon-trash"></span></a>
+        </td>
+    </tr>
+}
+
+</table>

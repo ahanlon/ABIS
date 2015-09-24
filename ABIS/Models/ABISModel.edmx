@@ -1,0 +1,1301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ABISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateID" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="WorkPhone" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="MobilePhone" Type="numeric" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="COMPENSATION">
+          <Key>
+            <PropertyRef Name="CompensationID" />
+          </Key>
+          <Property Name="CompensationID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompensationTypeID" Type="int" Nullable="false" />
+          <Property Name="IRSTypeID" Type="int" Nullable="false" />
+          <Property Name="StaffID" Type="bigint" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="EffectiveDate" Type="date" Nullable="false" />
+          <Property Name="FullTimeInd" Type="bit" />
+        </EntityType>
+        <EntityType Name="COMPENSATION_TYPE">
+          <Key>
+            <PropertyRef Name="CompensationTypeID" />
+          </Key>
+          <Property Name="CompensationTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompensationType" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DIVISION">
+          <Key>
+            <PropertyRef Name="DivisionID" />
+          </Key>
+          <Property Name="DivisionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DivisionNumber" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="DivisionName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAMILY">
+          <Key>
+            <PropertyRef Name="FamilyID" />
+          </Key>
+          <Property Name="FamilyID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FamilyTypeID" Type="bigint" Nullable="false" />
+          <Property Name="StaffID" Type="bigint" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmergencyContactInd" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAMILY_TYPE">
+          <Key>
+            <PropertyRef Name="FamilyTypeID" />
+          </Key>
+          <Property Name="FamilyTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FamilyType" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IRS_TYPE">
+          <Key>
+            <PropertyRef Name="IRSTypeID" />
+          </Key>
+          <Property Name="IRSTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IRSType" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LABOR_CATALOG">
+          <Key>
+            <PropertyRef Name="LaborCatalogID" />
+          </Key>
+          <Property Name="LaborCatalogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientTitle" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ClientVariant" Type="varchar" MaxLength="100" />
+          <Property Name="ClientEducation" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ClientYearsOfExp" Type="int" Nullable="false" />
+          <Property Name="ClientRate" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="ASDJobName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ASDVariant" Type="varchar" MaxLength="100" />
+          <Property Name="ExemptInd" Type="bit" Nullable="false" />
+          <Property Name="ASDLaborCategoryID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LABOR_CATEGORY">
+          <Key>
+            <PropertyRef Name="ASDLaborCategoryID" />
+          </Key>
+          <Property Name="ASDLaborCategoryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LaborCategory" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MARKET">
+          <Key>
+            <PropertyRef Name="MarketID" />
+          </Key>
+          <Property Name="MarketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarketName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEETING">
+          <Key>
+            <PropertyRef Name="MeetingID" />
+          </Key>
+          <Property Name="MeetingID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffID" Type="bigint" Nullable="false" />
+          <Property Name="Purpose" Type="varbinary(max)" Nullable="false" />
+          <Property Name="TalkingPoints" Type="varbinary(max)" />
+          <Property Name="ActionItems" Type="varbinary(max)" />
+          <Property Name="OpenIssues" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ORGANIZATION">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+          </Key>
+          <Property Name="OrganizationID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrganizationName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="OrganizationAcronym" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Address1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address2" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROJECT">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrganizationID" Type="bigint" Nullable="false" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProjectNumber" Type="decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="ProjectStartDate" Type="date" Nullable="false" />
+          <Property Name="ProjectEndDate" Type="date" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROJECT_CLIENT">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ProjectID" Type="bigint" Nullable="false" />
+          <Property Name="ClientID" Type="bigint" Nullable="false" />
+          <Property Name="ProjectLeadInd" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROJECT_STAFF">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="ProjectID" Type="bigint" Nullable="false" />
+          <Property Name="StaffID" Type="bigint" Nullable="false" />
+          <Property Name="MarketID" Type="int" />
+          <Property Name="DivisionID" Type="int" Nullable="false" />
+          <Property Name="TaskLeadInd" Type="bit" Nullable="false" />
+          <Property Name="AccountManagerInd" Type="bit" Nullable="false" />
+          <Property Name="HourlyPay" Type="money" />
+          <Property Name="BillRate" Type="money" />
+        </EntityType>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LaborCatalogID" Type="bigint" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="Photo" Type="image" />
+          <Property Name="IndirectInd" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STATE">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="WORKING_MONTH">
+          <Key>
+            <PropertyRef Name="WorkingMonthInd" />
+          </Key>
+          <Property Name="WorkingMonthInd" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectID" Type="bigint" Nullable="false" />
+          <Property Name="StaffID" Type="bigint" Nullable="false" />
+          <Property Name="Month" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Year" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="BillablePercentage" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="ApproximateHoursPerWeek" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="FringePercentage" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="OverheadPercentage" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="GAPercentage" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="RefCLIENT14">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="1" />
+          <End Role="PROJECT_CLIENT" Type="Self.PROJECT_CLIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="PROJECT_CLIENT">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefCOMPENSATION_TYPE25">
+          <End Role="COMPENSATION_TYPE" Type="Self.COMPENSATION_TYPE" Multiplicity="1" />
+          <End Role="COMPENSATION" Type="Self.COMPENSATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPENSATION_TYPE">
+              <PropertyRef Name="CompensationTypeID" />
+            </Principal>
+            <Dependent Role="COMPENSATION">
+              <PropertyRef Name="CompensationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefDIVISION24">
+          <End Role="DIVISION" Type="Self.DIVISION" Multiplicity="1" />
+          <End Role="PROJECT_STAFF" Type="Self.PROJECT_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIVISION">
+              <PropertyRef Name="DivisionID" />
+            </Principal>
+            <Dependent Role="PROJECT_STAFF">
+              <PropertyRef Name="DivisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefFAMILY_TYPE5">
+          <End Role="FAMILY_TYPE" Type="Self.FAMILY_TYPE" Multiplicity="1" />
+          <End Role="FAMILY" Type="Self.FAMILY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FAMILY_TYPE">
+              <PropertyRef Name="FamilyTypeID" />
+            </Principal>
+            <Dependent Role="FAMILY">
+              <PropertyRef Name="FamilyTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefIRS_TYPE29">
+          <End Role="IRS_TYPE" Type="Self.IRS_TYPE" Multiplicity="1" />
+          <End Role="COMPENSATION" Type="Self.COMPENSATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRS_TYPE">
+              <PropertyRef Name="IRSTypeID" />
+            </Principal>
+            <Dependent Role="COMPENSATION">
+              <PropertyRef Name="IRSTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefLABOR_CATALOG6">
+          <End Role="LABOR_CATALOG" Type="Self.LABOR_CATALOG" Multiplicity="1" />
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABOR_CATALOG">
+              <PropertyRef Name="LaborCatalogID" />
+            </Principal>
+            <Dependent Role="STAFF">
+              <PropertyRef Name="LaborCatalogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefLABOR_CATEGORY7">
+          <End Role="LABOR_CATEGORY" Type="Self.LABOR_CATEGORY" Multiplicity="1" />
+          <End Role="LABOR_CATALOG" Type="Self.LABOR_CATALOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABOR_CATEGORY">
+              <PropertyRef Name="ASDLaborCategoryID" />
+            </Principal>
+            <Dependent Role="LABOR_CATALOG">
+              <PropertyRef Name="ASDLaborCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefMARKET23">
+          <End Role="MARKET" Type="Self.MARKET" Multiplicity="0..1" />
+          <End Role="PROJECT_STAFF" Type="Self.PROJECT_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARKET">
+              <PropertyRef Name="MarketID" />
+            </Principal>
+            <Dependent Role="PROJECT_STAFF">
+              <PropertyRef Name="MarketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefORGANIZATION17">
+          <End Role="ORGANIZATION" Type="Self.ORGANIZATION" Multiplicity="1" />
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORGANIZATION">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="PROJECT">
+              <PropertyRef Name="OrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefPROJECT_STAFF21">
+          <End Role="PROJECT_STAFF" Type="Self.PROJECT_STAFF" Multiplicity="1" />
+          <End Role="WORKING_MONTH" Type="Self.WORKING_MONTH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT_STAFF">
+              <PropertyRef Name="ProjectID" />
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="WORKING_MONTH">
+              <PropertyRef Name="ProjectID" />
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefPROJECT13">
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
+          <End Role="PROJECT_CLIENT" Type="Self.PROJECT_CLIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="PROJECT_CLIENT">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefPROJECT18">
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
+          <End Role="PROJECT_STAFF" Type="Self.PROJECT_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="PROJECT_STAFF">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSTAFF1">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="FAMILY" Type="Self.FAMILY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="FAMILY">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSTAFF19">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="PROJECT_STAFF" Type="Self.PROJECT_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="PROJECT_STAFF">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSTAFF2">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="MEETING" Type="Self.MEETING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="MEETING">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSTAFF28">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="COMPENSATION" Type="Self.COMPENSATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="COMPENSATION">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSTATE9">
+          <End Role="STATE" Type="Self.STATE" Multiplicity="1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATE">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ABISModelStoreContainer">
+          <EntitySet Name="CITY" EntityType="Self.CITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENT" EntityType="Self.CLIENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPENSATION" EntityType="Self.COMPENSATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPENSATION_TYPE" EntityType="Self.COMPENSATION_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DIVISION" EntityType="Self.DIVISION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAMILY" EntityType="Self.FAMILY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAMILY_TYPE" EntityType="Self.FAMILY_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IRS_TYPE" EntityType="Self.IRS_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LABOR_CATALOG" EntityType="Self.LABOR_CATALOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LABOR_CATEGORY" EntityType="Self.LABOR_CATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MARKET" EntityType="Self.MARKET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEETING" EntityType="Self.MEETING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORGANIZATION" EntityType="Self.ORGANIZATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROJECT" EntityType="Self.PROJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROJECT_CLIENT" EntityType="Self.PROJECT_CLIENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROJECT_STAFF" EntityType="Self.PROJECT_STAFF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATE" EntityType="Self.STATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WORKING_MONTH" EntityType="Self.WORKING_MONTH" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="RefCLIENT14" Association="Self.RefCLIENT14">
+            <End Role="CLIENT" EntitySet="CLIENT" />
+            <End Role="PROJECT_CLIENT" EntitySet="PROJECT_CLIENT" />
+          </AssociationSet>
+          <AssociationSet Name="RefCOMPENSATION_TYPE25" Association="Self.RefCOMPENSATION_TYPE25">
+            <End Role="COMPENSATION_TYPE" EntitySet="COMPENSATION_TYPE" />
+            <End Role="COMPENSATION" EntitySet="COMPENSATION" />
+          </AssociationSet>
+          <AssociationSet Name="RefDIVISION24" Association="Self.RefDIVISION24">
+            <End Role="DIVISION" EntitySet="DIVISION" />
+            <End Role="PROJECT_STAFF" EntitySet="PROJECT_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="RefFAMILY_TYPE5" Association="Self.RefFAMILY_TYPE5">
+            <End Role="FAMILY_TYPE" EntitySet="FAMILY_TYPE" />
+            <End Role="FAMILY" EntitySet="FAMILY" />
+          </AssociationSet>
+          <AssociationSet Name="RefIRS_TYPE29" Association="Self.RefIRS_TYPE29">
+            <End Role="IRS_TYPE" EntitySet="IRS_TYPE" />
+            <End Role="COMPENSATION" EntitySet="COMPENSATION" />
+          </AssociationSet>
+          <AssociationSet Name="RefLABOR_CATALOG6" Association="Self.RefLABOR_CATALOG6">
+            <End Role="LABOR_CATALOG" EntitySet="LABOR_CATALOG" />
+            <End Role="STAFF" EntitySet="STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="RefLABOR_CATEGORY7" Association="Self.RefLABOR_CATEGORY7">
+            <End Role="LABOR_CATEGORY" EntitySet="LABOR_CATEGORY" />
+            <End Role="LABOR_CATALOG" EntitySet="LABOR_CATALOG" />
+          </AssociationSet>
+          <AssociationSet Name="RefMARKET23" Association="Self.RefMARKET23">
+            <End Role="MARKET" EntitySet="MARKET" />
+            <End Role="PROJECT_STAFF" EntitySet="PROJECT_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="RefORGANIZATION17" Association="Self.RefORGANIZATION17">
+            <End Role="ORGANIZATION" EntitySet="ORGANIZATION" />
+            <End Role="PROJECT" EntitySet="PROJECT" />
+          </AssociationSet>
+          <AssociationSet Name="RefPROJECT_STAFF21" Association="Self.RefPROJECT_STAFF21">
+            <End Role="PROJECT_STAFF" EntitySet="PROJECT_STAFF" />
+            <End Role="WORKING_MONTH" EntitySet="WORKING_MONTH" />
+          </AssociationSet>
+          <AssociationSet Name="RefPROJECT13" Association="Self.RefPROJECT13">
+            <End Role="PROJECT" EntitySet="PROJECT" />
+            <End Role="PROJECT_CLIENT" EntitySet="PROJECT_CLIENT" />
+          </AssociationSet>
+          <AssociationSet Name="RefPROJECT18" Association="Self.RefPROJECT18">
+            <End Role="PROJECT" EntitySet="PROJECT" />
+            <End Role="PROJECT_STAFF" EntitySet="PROJECT_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="RefSTAFF1" Association="Self.RefSTAFF1">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="FAMILY" EntitySet="FAMILY" />
+          </AssociationSet>
+          <AssociationSet Name="RefSTAFF19" Association="Self.RefSTAFF19">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="PROJECT_STAFF" EntitySet="PROJECT_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="RefSTAFF2" Association="Self.RefSTAFF2">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="MEETING" EntitySet="MEETING" />
+          </AssociationSet>
+          <AssociationSet Name="RefSTAFF28" Association="Self.RefSTAFF28">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="COMPENSATION" EntitySet="COMPENSATION" />
+          </AssociationSet>
+          <AssociationSet Name="RefSTATE9" Association="Self.RefSTATE9">
+            <End Role="STATE" EntitySet="STATE" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ABISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateID" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="STATE" Relationship="Self.RefSTATE9" FromRole="CITY" ToRole="STATE" />
+        </EntityType>
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkPhone" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="MobilePhone" Type="Decimal" Precision="10" Scale="0" />
+          <NavigationProperty Name="PROJECT_CLIENT" Relationship="Self.RefCLIENT14" FromRole="CLIENT" ToRole="PROJECT_CLIENT" />
+        </EntityType>
+        <EntityType Name="COMPENSATION">
+          <Key>
+            <PropertyRef Name="CompensationID" />
+          </Key>
+          <Property Name="CompensationID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompensationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="IRSTypeID" Type="Int32" Nullable="false" />
+          <Property Name="StaffID" Type="Int64" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="EffectiveDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FullTimeInd" Type="Boolean" />
+          <NavigationProperty Name="COMPENSATION_TYPE" Relationship="Self.RefCOMPENSATION_TYPE25" FromRole="COMPENSATION" ToRole="COMPENSATION_TYPE" />
+          <NavigationProperty Name="IRS_TYPE" Relationship="Self.RefIRS_TYPE29" FromRole="COMPENSATION" ToRole="IRS_TYPE" />
+          <NavigationProperty Name="STAFF" Relationship="Self.RefSTAFF28" FromRole="COMPENSATION" ToRole="STAFF" />
+        </EntityType>
+        <EntityType Name="COMPENSATION_TYPE">
+          <Key>
+            <PropertyRef Name="CompensationTypeID" />
+          </Key>
+          <Property Name="CompensationTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompensationType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="COMPENSATIONs" Relationship="Self.RefCOMPENSATION_TYPE25" FromRole="COMPENSATION_TYPE" ToRole="COMPENSATION" />
+        </EntityType>
+        <EntityType Name="DIVISION">
+          <Key>
+            <PropertyRef Name="DivisionID" />
+          </Key>
+          <Property Name="DivisionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DivisionNumber" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="DivisionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PROJECT_STAFF" Relationship="Self.RefDIVISION24" FromRole="DIVISION" ToRole="PROJECT_STAFF" />
+        </EntityType>
+        <EntityType Name="FAMILY">
+          <Key>
+            <PropertyRef Name="FamilyID" />
+          </Key>
+          <Property Name="FamilyID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FamilyTypeID" Type="Int64" Nullable="false" />
+          <Property Name="StaffID" Type="Int64" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmergencyContactInd" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FAMILY_TYPE" Relationship="Self.RefFAMILY_TYPE5" FromRole="FAMILY" ToRole="FAMILY_TYPE" />
+          <NavigationProperty Name="STAFF" Relationship="Self.RefSTAFF1" FromRole="FAMILY" ToRole="STAFF" />
+        </EntityType>
+        <EntityType Name="FAMILY_TYPE">
+          <Key>
+            <PropertyRef Name="FamilyTypeID" />
+          </Key>
+          <Property Name="FamilyTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FamilyType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="FAMILies" Relationship="Self.RefFAMILY_TYPE5" FromRole="FAMILY_TYPE" ToRole="FAMILY" />
+        </EntityType>
+        <EntityType Name="IRS_TYPE">
+          <Key>
+            <PropertyRef Name="IRSTypeID" />
+          </Key>
+          <Property Name="IRSTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IRSType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="COMPENSATIONs" Relationship="Self.RefIRS_TYPE29" FromRole="IRS_TYPE" ToRole="COMPENSATION" />
+        </EntityType>
+        <EntityType Name="LABOR_CATALOG">
+          <Key>
+            <PropertyRef Name="LaborCatalogID" />
+          </Key>
+          <Property Name="LaborCatalogID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientVariant" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ClientEducation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientYearsOfExp" Type="Int32" Nullable="false" />
+          <Property Name="ClientRate" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="ASDJobName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ASDVariant" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ExemptInd" Type="Boolean" Nullable="false" />
+          <Property Name="ASDLaborCategoryID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="STAFFs" Relationship="Self.RefLABOR_CATALOG6" FromRole="LABOR_CATALOG" ToRole="STAFF" />
+          <NavigationProperty Name="LABOR_CATEGORY" Relationship="Self.RefLABOR_CATEGORY7" FromRole="LABOR_CATALOG" ToRole="LABOR_CATEGORY" />
+        </EntityType>
+        <EntityType Name="LABOR_CATEGORY">
+          <Key>
+            <PropertyRef Name="ASDLaborCategoryID" />
+          </Key>
+          <Property Name="ASDLaborCategoryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LaborCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LABOR_CATALOG" Relationship="Self.RefLABOR_CATEGORY7" FromRole="LABOR_CATEGORY" ToRole="LABOR_CATALOG" />
+        </EntityType>
+        <EntityType Name="MARKET">
+          <Key>
+            <PropertyRef Name="MarketID" />
+          </Key>
+          <Property Name="MarketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarketName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PROJECT_STAFF" Relationship="Self.RefMARKET23" FromRole="MARKET" ToRole="PROJECT_STAFF" />
+        </EntityType>
+        <EntityType Name="MEETING">
+          <Key>
+            <PropertyRef Name="MeetingID" />
+          </Key>
+          <Property Name="MeetingID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffID" Type="Int64" Nullable="false" />
+          <Property Name="Purpose" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="TalkingPoints" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ActionItems" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OpenIssues" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="STAFF" Relationship="Self.RefSTAFF2" FromRole="MEETING" ToRole="STAFF" />
+        </EntityType>
+        <EntityType Name="ORGANIZATION">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+          </Key>
+          <Property Name="OrganizationID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrganizationAcronym" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PROJECTs" Relationship="Self.RefORGANIZATION17" FromRole="ORGANIZATION" ToRole="PROJECT" />
+        </EntityType>
+        <EntityType Name="PROJECT">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="Int64" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProjectNumber" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="ProjectStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ProjectEndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ORGANIZATION" Relationship="Self.RefORGANIZATION17" FromRole="PROJECT" ToRole="ORGANIZATION" />
+          <NavigationProperty Name="PROJECT_CLIENT" Relationship="Self.RefPROJECT13" FromRole="PROJECT" ToRole="PROJECT_CLIENT" />
+          <NavigationProperty Name="PROJECT_STAFF" Relationship="Self.RefPROJECT18" FromRole="PROJECT" ToRole="PROJECT_STAFF" />
+        </EntityType>
+        <EntityType Name="PROJECT_CLIENT">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ProjectID" Type="Int64" Nullable="false" />
+          <Property Name="ClientID" Type="Int64" Nullable="false" />
+          <Property Name="ProjectLeadInd" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CLIENT" Relationship="Self.RefCLIENT14" FromRole="PROJECT_CLIENT" ToRole="CLIENT" />
+          <NavigationProperty Name="PROJECT" Relationship="Self.RefPROJECT13" FromRole="PROJECT_CLIENT" ToRole="PROJECT" />
+        </EntityType>
+        <EntityType Name="PROJECT_STAFF">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="ProjectID" Type="Int64" Nullable="false" />
+          <Property Name="StaffID" Type="Int64" Nullable="false" />
+          <Property Name="MarketID" Type="Int32" />
+          <Property Name="DivisionID" Type="Int32" Nullable="false" />
+          <Property Name="TaskLeadInd" Type="Boolean" Nullable="false" />
+          <Property Name="AccountManagerInd" Type="Boolean" Nullable="false" />
+          <Property Name="HourlyPay" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BillRate" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="DIVISION" Relationship="Self.RefDIVISION24" FromRole="PROJECT_STAFF" ToRole="DIVISION" />
+          <NavigationProperty Name="MARKET" Relationship="Self.RefMARKET23" FromRole="PROJECT_STAFF" ToRole="MARKET" />
+          <NavigationProperty Name="PROJECT" Relationship="Self.RefPROJECT18" FromRole="PROJECT_STAFF" ToRole="PROJECT" />
+          <NavigationProperty Name="WORKING_MONTH" Relationship="Self.RefPROJECT_STAFF21" FromRole="PROJECT_STAFF" ToRole="WORKING_MONTH" />
+          <NavigationProperty Name="STAFF" Relationship="Self.RefSTAFF19" FromRole="PROJECT_STAFF" ToRole="STAFF" />
+        </EntityType>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LaborCatalogID" Type="Int64" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IndirectInd" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="COMPENSATIONs" Relationship="Self.RefSTAFF28" FromRole="STAFF" ToRole="COMPENSATION" />
+          <NavigationProperty Name="FAMILies" Relationship="Self.RefSTAFF1" FromRole="STAFF" ToRole="FAMILY" />
+          <NavigationProperty Name="LABOR_CATALOG" Relationship="Self.RefLABOR_CATALOG6" FromRole="STAFF" ToRole="LABOR_CATALOG" />
+          <NavigationProperty Name="MEETINGs" Relationship="Self.RefSTAFF2" FromRole="STAFF" ToRole="MEETING" />
+          <NavigationProperty Name="PROJECT_STAFF" Relationship="Self.RefSTAFF19" FromRole="STAFF" ToRole="PROJECT_STAFF" />
+        </EntityType>
+        <EntityType Name="STATE">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CITies" Relationship="Self.RefSTATE9" FromRole="STATE" ToRole="CITY" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="WORKING_MONTH">
+          <Key>
+            <PropertyRef Name="WorkingMonthInd" />
+          </Key>
+          <Property Name="WorkingMonthInd" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectID" Type="Int64" Nullable="false" />
+          <Property Name="StaffID" Type="Int64" Nullable="false" />
+          <Property Name="Month" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Year" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="BillablePercentage" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="ApproximateHoursPerWeek" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="FringePercentage" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="OverheadPercentage" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="GAPercentage" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <NavigationProperty Name="PROJECT_STAFF" Relationship="Self.RefPROJECT_STAFF21" FromRole="WORKING_MONTH" ToRole="PROJECT_STAFF" />
+        </EntityType>
+        <Association Name="RefSTATE9">
+          <End Role="STATE" Type="Self.STATE" Multiplicity="1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATE">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefCLIENT14">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="1" />
+          <End Role="PROJECT_CLIENT" Type="Self.PROJECT_CLIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="PROJECT_CLIENT">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefCOMPENSATION_TYPE25">
+          <End Role="COMPENSATION_TYPE" Type="Self.COMPENSATION_TYPE" Multiplicity="1" />
+          <End Role="COMPENSATION" Type="Self.COMPENSATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPENSATION_TYPE">
+              <PropertyRef Name="CompensationTypeID" />
+            </Principal>
+            <Dependent Role="COMPENSATION">
+              <PropertyRef Name="CompensationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefIRS_TYPE29">
+          <End Role="IRS_TYPE" Type="Self.IRS_TYPE" Multiplicity="1" />
+          <End Role="COMPENSATION" Type="Self.COMPENSATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRS_TYPE">
+              <PropertyRef Name="IRSTypeID" />
+            </Principal>
+            <Dependent Role="COMPENSATION">
+              <PropertyRef Name="IRSTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSTAFF28">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="COMPENSATION" Type="Self.COMPENSATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="COMPENSATION">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefDIVISION24">
+          <End Role="DIVISION" Type="Self.DIVISION" Multiplicity="1" />
+          <End Role="PROJECT_STAFF" Type="Self.PROJECT_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIVISION">
+              <PropertyRef Name="DivisionID" />
+            </Principal>
+            <Dependent Role="PROJECT_STAFF">
+              <PropertyRef Name="DivisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefFAMILY_TYPE5">
+          <End Role="FAMILY_TYPE" Type="Self.FAMILY_TYPE" Multiplicity="1" />
+          <End Role="FAMILY" Type="Self.FAMILY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FAMILY_TYPE">
+              <PropertyRef Name="FamilyTypeID" />
+            </Principal>
+            <Dependent Role="FAMILY">
+              <PropertyRef Name="FamilyTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSTAFF1">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="FAMILY" Type="Self.FAMILY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="FAMILY">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefLABOR_CATALOG6">
+          <End Role="LABOR_CATALOG" Type="Self.LABOR_CATALOG" Multiplicity="1" />
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABOR_CATALOG">
+              <PropertyRef Name="LaborCatalogID" />
+            </Principal>
+            <Dependent Role="STAFF">
+              <PropertyRef Name="LaborCatalogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefLABOR_CATEGORY7">
+          <End Role="LABOR_CATEGORY" Type="Self.LABOR_CATEGORY" Multiplicity="1" />
+          <End Role="LABOR_CATALOG" Type="Self.LABOR_CATALOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LABOR_CATEGORY">
+              <PropertyRef Name="ASDLaborCategoryID" />
+            </Principal>
+            <Dependent Role="LABOR_CATALOG">
+              <PropertyRef Name="ASDLaborCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefMARKET23">
+          <End Role="MARKET" Type="Self.MARKET" Multiplicity="0..1" />
+          <End Role="PROJECT_STAFF" Type="Self.PROJECT_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARKET">
+              <PropertyRef Name="MarketID" />
+            </Principal>
+            <Dependent Role="PROJECT_STAFF">
+              <PropertyRef Name="MarketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSTAFF2">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="MEETING" Type="Self.MEETING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="MEETING">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefORGANIZATION17">
+          <End Role="ORGANIZATION" Type="Self.ORGANIZATION" Multiplicity="1" />
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORGANIZATION">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="PROJECT">
+              <PropertyRef Name="OrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefPROJECT13">
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
+          <End Role="PROJECT_CLIENT" Type="Self.PROJECT_CLIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="PROJECT_CLIENT">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefPROJECT18">
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
+          <End Role="PROJECT_STAFF" Type="Self.PROJECT_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="PROJECT_STAFF">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefPROJECT_STAFF21">
+          <End Role="PROJECT_STAFF" Type="Self.PROJECT_STAFF" Multiplicity="1" />
+          <End Role="WORKING_MONTH" Type="Self.WORKING_MONTH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT_STAFF">
+              <PropertyRef Name="ProjectID" />
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="WORKING_MONTH">
+              <PropertyRef Name="ProjectID" />
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSTAFF19">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="PROJECT_STAFF" Type="Self.PROJECT_STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="PROJECT_STAFF">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ABISEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CITies" EntityType="Self.CITY" />
+          <EntitySet Name="CLIENTs" EntityType="Self.CLIENT" />
+          <EntitySet Name="COMPENSATIONs" EntityType="Self.COMPENSATION" />
+          <EntitySet Name="COMPENSATION_TYPE" EntityType="Self.COMPENSATION_TYPE" />
+          <EntitySet Name="DIVISIONs" EntityType="Self.DIVISION" />
+          <EntitySet Name="FAMILies" EntityType="Self.FAMILY" />
+          <EntitySet Name="FAMILY_TYPE" EntityType="Self.FAMILY_TYPE" />
+          <EntitySet Name="IRS_TYPE" EntityType="Self.IRS_TYPE" />
+          <EntitySet Name="LABOR_CATALOG" EntityType="Self.LABOR_CATALOG" />
+          <EntitySet Name="LABOR_CATEGORY" EntityType="Self.LABOR_CATEGORY" />
+          <EntitySet Name="MARKETs" EntityType="Self.MARKET" />
+          <EntitySet Name="MEETINGs" EntityType="Self.MEETING" />
+          <EntitySet Name="ORGANIZATIONs" EntityType="Self.ORGANIZATION" />
+          <EntitySet Name="PROJECTs" EntityType="Self.PROJECT" />
+          <EntitySet Name="PROJECT_CLIENT" EntityType="Self.PROJECT_CLIENT" />
+          <EntitySet Name="PROJECT_STAFF" EntityType="Self.PROJECT_STAFF" />
+          <EntitySet Name="STAFFs" EntityType="Self.STAFF" />
+          <EntitySet Name="STATEs" EntityType="Self.STATE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="WORKING_MONTH" EntityType="Self.WORKING_MONTH" />
+          <AssociationSet Name="RefSTATE9" Association="Self.RefSTATE9">
+            <End Role="STATE" EntitySet="STATEs" />
+            <End Role="CITY" EntitySet="CITies" />
+          </AssociationSet>
+          <AssociationSet Name="RefCLIENT14" Association="Self.RefCLIENT14">
+            <End Role="CLIENT" EntitySet="CLIENTs" />
+            <End Role="PROJECT_CLIENT" EntitySet="PROJECT_CLIENT" />
+          </AssociationSet>
+          <AssociationSet Name="RefCOMPENSATION_TYPE25" Association="Self.RefCOMPENSATION_TYPE25">
+            <End Role="COMPENSATION_TYPE" EntitySet="COMPENSATION_TYPE" />
+            <End Role="COMPENSATION" EntitySet="COMPENSATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="RefIRS_TYPE29" Association="Self.RefIRS_TYPE29">
+            <End Role="IRS_TYPE" EntitySet="IRS_TYPE" />
+            <End Role="COMPENSATION" EntitySet="COMPENSATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="RefSTAFF28" Association="Self.RefSTAFF28">
+            <End Role="STAFF" EntitySet="STAFFs" />
+            <End Role="COMPENSATION" EntitySet="COMPENSATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="RefDIVISION24" Association="Self.RefDIVISION24">
+            <End Role="DIVISION" EntitySet="DIVISIONs" />
+            <End Role="PROJECT_STAFF" EntitySet="PROJECT_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="RefFAMILY_TYPE5" Association="Self.RefFAMILY_TYPE5">
+            <End Role="FAMILY_TYPE" EntitySet="FAMILY_TYPE" />
+            <End Role="FAMILY" EntitySet="FAMILies" />
+          </AssociationSet>
+          <AssociationSet Name="RefSTAFF1" Association="Self.RefSTAFF1">
+            <End Role="STAFF" EntitySet="STAFFs" />
+            <End Role="FAMILY" EntitySet="FAMILies" />
+          </AssociationSet>
+          <AssociationSet Name="RefLABOR_CATALOG6" Association="Self.RefLABOR_CATALOG6">
+            <End Role="LABOR_CATALOG" EntitySet="LABOR_CATALOG" />
+            <End Role="STAFF" EntitySet="STAFFs" />
+          </AssociationSet>
+          <AssociationSet Name="RefLABOR_CATEGORY7" Association="Self.RefLABOR_CATEGORY7">
+            <End Role="LABOR_CATEGORY" EntitySet="LABOR_CATEGORY" />
+            <End Role="LABOR_CATALOG" EntitySet="LABOR_CATALOG" />
+          </AssociationSet>
+          <AssociationSet Name="RefMARKET23" Association="Self.RefMARKET23">
+            <End Role="MARKET" EntitySet="MARKETs" />
+            <End Role="PROJECT_STAFF" EntitySet="PROJECT_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="RefSTAFF2" Association="Self.RefSTAFF2">
+            <End Role="STAFF" EntitySet="STAFFs" />
+            <End Role="MEETING" EntitySet="MEETINGs" />
+          </AssociationSet>
+          <AssociationSet Name="RefORGANIZATION17" Association="Self.RefORGANIZATION17">
+            <End Role="ORGANIZATION" EntitySet="ORGANIZATIONs" />
+            <End Role="PROJECT" EntitySet="PROJECTs" />
+          </AssociationSet>
+          <AssociationSet Name="RefPROJECT13" Association="Self.RefPROJECT13">
+            <End Role="PROJECT" EntitySet="PROJECTs" />
+            <End Role="PROJECT_CLIENT" EntitySet="PROJECT_CLIENT" />
+          </AssociationSet>
+          <AssociationSet Name="RefPROJECT18" Association="Self.RefPROJECT18">
+            <End Role="PROJECT" EntitySet="PROJECTs" />
+            <End Role="PROJECT_STAFF" EntitySet="PROJECT_STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="RefPROJECT_STAFF21" Association="Self.RefPROJECT_STAFF21">
+            <End Role="PROJECT_STAFF" EntitySet="PROJECT_STAFF" />
+            <End Role="WORKING_MONTH" EntitySet="WORKING_MONTH" />
+          </AssociationSet>
+          <AssociationSet Name="RefSTAFF19" Association="Self.RefSTAFF19">
+            <End Role="STAFF" EntitySet="STAFFs" />
+            <End Role="PROJECT_STAFF" EntitySet="PROJECT_STAFF" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ABISModelStoreContainer" CdmEntityContainer="ABISEntities">
+          <EntitySetMapping Name="CITies">
+            <EntityTypeMapping TypeName="ABISModel.CITY">
+              <MappingFragment StoreEntitySet="CITY">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTs">
+            <EntityTypeMapping TypeName="ABISModel.CLIENT">
+              <MappingFragment StoreEntitySet="CLIENT">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPENSATIONs">
+            <EntityTypeMapping TypeName="ABISModel.COMPENSATION">
+              <MappingFragment StoreEntitySet="COMPENSATION">
+                <ScalarProperty Name="CompensationID" ColumnName="CompensationID" />
+                <ScalarProperty Name="CompensationTypeID" ColumnName="CompensationTypeID" />
+                <ScalarProperty Name="IRSTypeID" ColumnName="IRSTypeID" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="FullTimeInd" ColumnName="FullTimeInd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPENSATION_TYPE">
+            <EntityTypeMapping TypeName="ABISModel.COMPENSATION_TYPE">
+              <MappingFragment StoreEntitySet="COMPENSATION_TYPE">
+                <ScalarProperty Name="CompensationTypeID" ColumnName="CompensationTypeID" />
+                <ScalarProperty Name="CompensationType" ColumnName="CompensationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIVISIONs">
+            <EntityTypeMapping TypeName="ABISModel.DIVISION">
+              <MappingFragment StoreEntitySet="DIVISION">
+                <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+                <ScalarProperty Name="DivisionNumber" ColumnName="DivisionNumber" />
+                <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAMILies">
+            <EntityTypeMapping TypeName="ABISModel.FAMILY">
+              <MappingFragment StoreEntitySet="FAMILY">
+                <ScalarProperty Name="FamilyID" ColumnName="FamilyID" />
+                <ScalarProperty Name="FamilyTypeID" ColumnName="FamilyTypeID" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmergencyContactInd" ColumnName="EmergencyContactInd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAMILY_TYPE">
+            <EntityTypeMapping TypeName="ABISModel.FAMILY_TYPE">
+              <MappingFragment StoreEntitySet="FAMILY_TYPE">
+                <ScalarProperty Name="FamilyTypeID" ColumnName="FamilyTypeID" />
+                <ScalarProperty Name="FamilyType" ColumnName="FamilyType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IRS_TYPE">
+            <EntityTypeMapping TypeName="ABISModel.IRS_TYPE">
+              <MappingFragment StoreEntitySet="IRS_TYPE">
+                <ScalarProperty Name="IRSTypeID" ColumnName="IRSTypeID" />
+                <ScalarProperty Name="IRSType" ColumnName="IRSType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LABOR_CATALOG">
+            <EntityTypeMapping TypeName="ABISModel.LABOR_CATALOG">
+              <MappingFragment StoreEntitySet="LABOR_CATALOG">
+                <ScalarProperty Name="LaborCatalogID" ColumnName="LaborCatalogID" />
+                <ScalarProperty Name="ClientTitle" ColumnName="ClientTitle" />
+                <ScalarProperty Name="ClientVariant" ColumnName="ClientVariant" />
+                <ScalarProperty Name="ClientEducation" ColumnName="ClientEducation" />
+                <ScalarProperty Name="ClientYearsOfExp" ColumnName="ClientYearsOfExp" />
+                <ScalarProperty Name="ClientRate" ColumnName="ClientRate" />
+                <ScalarProperty Name="ASDJobName" ColumnName="ASDJobName" />
+                <ScalarProperty Name="ASDVariant" ColumnName="ASDVariant" />
+                <ScalarProperty Name="ExemptInd" ColumnName="ExemptInd" />
+                <ScalarProperty Name="ASDLaborCategoryID" ColumnName="ASDLaborCategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LABOR_CATEGORY">
+            <EntityTypeMapping TypeName="ABISModel.LABOR_CATEGORY">
+              <MappingFragment StoreEntitySet="LABOR_CATEGORY">
+                <ScalarProperty Name="ASDLaborCategoryID" ColumnName="ASDLaborCategoryID" />
+                <ScalarProperty Name="LaborCategory" ColumnName="LaborCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARKETs">
+            <EntityTypeMapping TypeName="ABISModel.MARKET">
+              <MappingFragment StoreEntitySet="MARKET">
+                <ScalarProperty Name="MarketID" ColumnName="MarketID" />
+                <ScalarProperty Name="MarketName" ColumnName="MarketName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEETINGs">
+            <EntityTypeMapping TypeName="ABISModel.MEETING">
+              <MappingFragment StoreEntitySet="MEETING">
+                <ScalarProperty Name="MeetingID" ColumnName="MeetingID" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="TalkingPoints" ColumnName="TalkingPoints" />
+                <ScalarProperty Name="ActionItems" ColumnName="ActionItems" />
+                <ScalarProperty Name="OpenIssues" ColumnName="OpenIssues" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORGANIZATIONs">
+            <EntityTypeMapping TypeName="ABISModel.ORGANIZATION">
+              <MappingFragment StoreEntitySet="ORGANIZATION">
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+                <ScalarProperty Name="OrganizationAcronym" ColumnName="OrganizationAcronym" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROJECTs">
+            <EntityTypeMapping TypeName="ABISModel.PROJECT">
+              <MappingFragment StoreEntitySet="PROJECT">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectNumber" ColumnName="ProjectNumber" />
+                <ScalarProperty Name="ProjectStartDate" ColumnName="ProjectStartDate" />
+                <ScalarProperty Name="ProjectEndDate" ColumnName="ProjectEndDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROJECT_CLIENT">
+            <EntityTypeMapping TypeName="ABISModel.PROJECT_CLIENT">
+              <MappingFragment StoreEntitySet="PROJECT_CLIENT">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ProjectLeadInd" ColumnName="ProjectLeadInd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROJECT_STAFF">
+            <EntityTypeMapping TypeName="ABISModel.PROJECT_STAFF">
+              <MappingFragment StoreEntitySet="PROJECT_STAFF">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="MarketID" ColumnName="MarketID" />
+                <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+                <ScalarProperty Name="TaskLeadInd" ColumnName="TaskLeadInd" />
+                <ScalarProperty Name="AccountManagerInd" ColumnName="AccountManagerInd" />
+                <ScalarProperty Name="HourlyPay" ColumnName="HourlyPay" />
+                <ScalarProperty Name="BillRate" ColumnName="BillRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFFs">
+            <EntityTypeMapping TypeName="ABISModel.STAFF">
+              <MappingFragment StoreEntitySet="STAFF">
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="LaborCatalogID" ColumnName="LaborCatalogID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="IndirectInd" ColumnName="IndirectInd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATEs">
+            <EntityTypeMapping TypeName="ABISModel.STATE">
+              <MappingFragment StoreEntitySet="STATE">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ABISModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WORKING_MONTH">
+            <EntityTypeMapping TypeName="ABISModel.WORKING_MONTH">
+              <MappingFragment StoreEntitySet="WORKING_MONTH">
+                <ScalarProperty Name="WorkingMonthInd" ColumnName="WorkingMonthInd" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="BillablePercentage" ColumnName="BillablePercentage" />
+                <ScalarProperty Name="ApproximateHoursPerWeek" ColumnName="ApproximateHoursPerWeek" />
+                <ScalarProperty Name="FringePercentage" ColumnName="FringePercentage" />
+                <ScalarProperty Name="OverheadPercentage" ColumnName="OverheadPercentage" />
+                <ScalarProperty Name="GAPercentage" ColumnName="GAPercentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

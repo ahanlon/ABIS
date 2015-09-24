@@ -1,0 +1,77 @@
+﻿@model ABIS.Models.STAFF
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<aside>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.StaffID)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.StaffID)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.LaborCatalogID)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.LaborCatalogID)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.FirstName)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.LastName)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.LastName)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.BirthDate)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.StartDate)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.StartDate)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.IndirectInd)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.IndirectInd)
+        </div>
+    </div>
+</aside>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <button type="submit" value="Delete" class="btn btn-primary">Delete
+        </button>
+        <button class="btn btn-primary">
+            @Html.ActionLink("Back to List", "StaffList", null, new { @style = "text-decoration:none; color:white;" })        
+        </button>
+    </p>
+}

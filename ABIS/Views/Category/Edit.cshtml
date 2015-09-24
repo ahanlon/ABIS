@@ -1,0 +1,44 @@
+﻿@model ABIS.Models.LABOR_CATEGORY
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>LABOR_CATEGORY</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ASDLaborCategoryID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ASDLaborCategoryID)
+            @Html.ValidationMessageFor(model => model.ASDLaborCategoryID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LaborCategory)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LaborCategory)
+            @Html.ValidationMessageFor(model => model.LaborCategory)
+        </div>
+
+        <p>
+            <button type="submit" value="Save" class="btn btn-primary">Save</button>
+        </p>
+    </fieldset>
+}
+
+<button class="btn btn-primary">
+    @Html.ActionLink("Back to List", "CategoryList", null, new { @style = "text-decoration:none; color:white;" })
+</button>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

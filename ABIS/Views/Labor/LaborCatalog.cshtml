@@ -1,0 +1,99 @@
+﻿@model ABIS.Models.LABOR_CATALOG
+
+@{
+    ViewBag.Title = "LaborCatalog";
+}
+
+<h2>LaborCatalog</h2>
+
+
+<aside>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.LaborCatalogID)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.LaborCatalogID)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ClientTitle)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ClientTitle)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ClientVariant)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ClientVariant)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ClientEducation)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ClientEducation)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ClientYearsOfExp)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ClientYearsOfExp)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ClientRate)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ClientRate)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ASDJobName)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ASDJobName)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ASDVariant)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ASDVariant)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ExemptInd)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ExemptInd)
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            @Html.DisplayNameFor(model => model.ASDLaborCategoryID)
+        </div>
+        <div>
+            @Html.DisplayFor(model => model.ASDLaborCategoryID)
+        </div>
+    </div>
+</aside>
+<div>
+    <button class="btn btn-small btn-primary">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.LaborCatalogID }, new { @style = "text-decoration:none; color:white;" })
+    </button>
+    <button class="btn btn-small btn-primary">
+        @Html.ActionLink("Back to List", "LaborCatalogList", null, new { @style = "text-decoration:none; color:white;" })
+    </button>
+</div>
